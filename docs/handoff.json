@@ -1,0 +1,14 @@
+{
+ "task_id":"reference-value-tutorial-20261116",
+ "artifact_paths":["src/","data/lessons.json","scripts/","tests/","https://github.com/Technoetic/reference-value-tutorial"],
+ "verification_commands_and_results":[
+  {"command":"npm test","result":"41/41 passing on Node 24.22.1, Windows; no skipped tests"},
+  {"command":"npm run build","result":"rv-c1a69d994516; 15 JavaScript modules; zero runtime dependencies"},
+  {"command":"Aside CLI local update matrix at project subpath","result":"20/20 checks passed: dirty A-to-B, clean full-document requested target, saved state recovery, rollback, focus detection, version errors, malformed version, content retry/cancellation/stale request, data-only freshness, late edits, failed save, note preservation, Back/Forward, real 404s and direct link/ordinary refresh"},
+  {"command":"Aside 1440px hero screenshot and DOM","result":"hero renders with no horizontal document overflow; screenshot visually inspected"}
+ ],
+ "assumptions":["User explicitly authorized GitHub Pages publication; Sites hosting prohibited.","Static hash routing, public educational data only.","Fowler Product/Money is extended into a café price-tag teaching example.","Normal browser storage saves progress locally; blocked storage still permits lessons and reports failed saves.","Local HTTP cache headers are controllable; public GitHub Pages CDN headers are owned by GitHub and require observed verification."],
+ "unresolved":["Public deployment verification pending at first source publication.","Physical mobile device and actual BFCache restoration untested.","Save-in-flight race is unit tested; public browser has synchronous localStorage persistence, so deliberately slow saves are not a natural production operation."],
+ "next_safe_action":"Complete public Pages deployment and independently verify published build, assets and browser interactions.",
+ "verified_by":[{"actor":"scion_gap_audit (independent technical reviewer)","date":"2026-11-16","result":"41/41 tests and same build independently reproduced from byte-matched temporary copy; blocked storage getter path directly verified; source writes zero."}]
+}
