@@ -6,4 +6,3 @@
 .lab-board,.lab-controls,.products,.owner-card,.money-object,.object-row{min-width:0}
 .owner-card{grid-template-columns:minmax(0,1fr) auto}
 @media(max-width:760px){.lab-layout,.equality-layout{grid-template-columns:minmax(0,1fr)}.products,.object-row{grid-template-columns:repeat(2,minmax(0,1fr))}.object-row.shared{grid-template-columns:minmax(0,1fr)}}
-
