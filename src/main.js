@@ -16,6 +16,7 @@ class TutorialApp{
   this.root=document.querySelector('#main');this.loadedBuild=document.querySelector('meta[name="app-build"]').content;
   this.baseUrl=new URL('./',location.href);this.baseUrl.hash='';this.baseUrl.search='';
   this.storage=new LabStorageService();this.progress=this.storage.load();this.saving=false;this.unsaved=false;this.sequence=0;
+  document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();this.root.focus();this.root.scrollIntoView({block:'start'});});
   this.createLabs();this.contentService=new ContentService({baseUrl:this.baseUrl});this.version=new VersionService({baseUrl:this.baseUrl,loadedBuild:this.loadedBuild});
   document.body.dataset.build=this.loadedBuild;document.querySelector('#build-label').textContent=this.loadedBuild.slice(0,15);
   this.nav=document.querySelector('#lesson-nav');this.nav.innerHTML=ROUTES.map((r,i)=>`<a href="#${r.path}" data-route="${r.path}"><span>${String(i+1).padStart(2,'0')}</span><b>${e(r.label)}</b></a>`).join('');
