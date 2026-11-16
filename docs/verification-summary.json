@@ -124,6 +124,27 @@
   "independent_layout_checks": 51,
   "ci_runs": [
     "https://github.com/Technoetic/reference-value-tutorial/actions/runs/43777422754",
-    "https://github.com/Technoetic/reference-value-tutorial/actions/runs/43777594641"
-  ]
+    "https://github.com/Technoetic/reference-value-tutorial/actions/runs/43777594641",
+    "https://github.com/Technoetic/reference-value-tutorial/actions/runs/43778828338"
+  ],
+  "final": {
+    "source_commit": "d53be53bf832670ce1256cb8c864d5141fd608fa",
+    "build": "rv-10338f2eccbd",
+    "ci": "https://github.com/Technoetic/reference-value-tutorial/actions/runs/43778828338",
+    "unit_tests_passed": 45,
+    "javascript_modules": 16,
+    "module_edges": 27,
+    "public_payload_hashes_matched": 56,
+    "public_ui_assertions_passed": 56,
+    "viewports": [
+      1440,
+      390
+    ],
+    "local_layout_regression_viewports": [
+      1440,
+      390,
+      340
+    ]
+  },
+  "entry_gate": "Stale-entry replacement, HTTP failure fallback and persistent-mismatch loop guard verified. Earlier cache and .nojekyll failures retained in history."
 }

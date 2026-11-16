@@ -43,6 +43,22 @@
     {
       "command": "Windows and Linux CI builds",
       "result": "Both deployments ran 41/41 tests; embedded build IDs agree with local build after LF normalization via .gitattributes."
+    },
+    {
+      "command": "Final exact GitHub source / CI artifact / fresh public bytes independent comparison",
+      "result": "d53be53 / rv-10338f2eccbd: 45/45 tests, 16 modules / 27 edges, all 56 listed public payloads HTTP200 and SHA256 equal. No .nojekyll served-file entry. Old immutable graphs retained and internally closed."
+    },
+    {
+      "command": "Final public Aside interaction, 1440px and 390px",
+      "result": "56/56 pass at rv-10338f2eccbd: shared mutation, isolated replacement, three equality cases, wrong answer feedback then all six correct answers, all six routes, no horizontal overflow. Storage state restored."
+    },
+    {
+      "command": "Entry gate and persistent stale HTML browser tests",
+      "result": "Before mounting editors, stale qa-a HTML with qa-b version full-document replaced to qa-b preserving #/equality. HTTP version failure kept current app usable. If every query still served qa-a, the second document stopped automatic replacement and remained usable at #/value; stable timeOrigin observed. Matching regression failed before the guard and passed after."
+    },
+    {
+      "command": "Final public entry",
+      "result": "HTML/version 200 with rv-10338f2eccbd; actual hashed entry gate module loaded. Ordinary base URL first observed editable UI was final build, with app-created _rv query. Earlier legacy A-to-B safe-navigation evidence is kept separately."
     }
   ],
   "assumptions": [
@@ -53,11 +69,12 @@
     "Local HTTP cache headers are controllable; public GitHub Pages CDN headers are owned by GitHub and require observed verification."
   ],
   "unresolved": [
-    "Physical mobile device and actual BFCache restoration untested.",
-    "One independent reviewer screenshot attempt timed out in CDP; host hero screenshot succeeded and was visually inspected. Layout was verified through actual DOM geometry and interactions.",
-    "Final manifest-only deployment verification pending; runtime already verified on the same rv-113f27fdffcb code."
+    "Physical mobile devices and actual BFCache restoration not exercised.",
+    "Independent mobile screenshot request timed out in CDP. DOM geometry and real interaction checks passed; host desktop screenshot succeeded.",
+    "GitHub Pages cache headers remain max-age=600. Documents predating the entry gate obtain new code on their existing next safe navigation; newly gated entry documents verify before editing UI mounts. Persistent HTML/version mismatch falls back to usable current runtime and retries only on a subsequent user navigation.",
+    "Immutable asset retention fails closed at 2048 files or 8MB; future pruning needs a separate cached-client policy."
   ],
-  "next_safe_action": "Verify final deployment manifest excludes .nojekyll and every listed served file matches; complete independent public artifact review.",
+  "next_safe_action": "Use the published tutorial. No required task work remains. Documentation-only final commit does not rebuild or change deployed app code.",
   "verified_by": [
     {
       "actor": "scion_gap_audit (independent technical reviewer)",
@@ -68,6 +85,35 @@
       "actor": "scion_primary_review (independent UI/concept reviewer)",
       "date": "2026-11-16",
       "result": "Root UI and other-agent lesson/quiz content concept review passed; actual two-width flow first recorded 94 pass / 2 mobile overflow fail, then focused three-width regression 51/51 passed. Own domain implementation excluded from independent concept approval."
+    },
+    {
+      "actor": "scion_gap_audit",
+      "date": "2026-11-16",
+      "result": "Independent final GitHub-source rebuild and 45 tests, CI and public 56 payload hashes; retained graphs checked."
+    },
+    {
+      "actor": "scion_primary_review",
+      "date": "2026-11-16",
+      "result": "Independent final public 56/56 UI assertions at 1440/390 and entry gate / repeated stale response safeguards; no source writes."
     }
-  ]
+  ],
+  "final": {
+    "source_commit": "d53be53bf832670ce1256cb8c864d5141fd608fa",
+    "build": "rv-10338f2eccbd",
+    "ci": "https://github.com/Technoetic/reference-value-tutorial/actions/runs/43778828338",
+    "unit_tests_passed": 45,
+    "javascript_modules": 16,
+    "module_edges": 27,
+    "public_payload_hashes_matched": 56,
+    "public_ui_assertions_passed": 56,
+    "viewports": [
+      1440,
+      390
+    ],
+    "local_layout_regression_viewports": [
+      1440,
+      390,
+      340
+    ]
+  }
 }
