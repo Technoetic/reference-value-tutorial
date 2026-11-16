@@ -16,7 +16,8 @@ async function walk(dir){
 const files={};
 for(const file of await walk(root)){
   const relative=path.relative(root,file).replaceAll('\\','/');
-  if(relative==='pages-manifest.json')continue;
+  // GitHub Pages consumes .nojekyll as a control marker; it is not a served asset.
+  if(relative==='pages-manifest.json'||relative==='.nojekyll')continue;
   files[relative]=createHash('sha256').update(await readFile(file)).digest('hex');
 }
 const {buildId}=JSON.parse(await readFile(path.join(root,'version.json'),'utf8'));

@@ -20,10 +20,12 @@ GitHub Pages only, no external runtime dependencies, no secrets or company data.
 
 ## Tasks
 
-- [ ] Domain: write behavior tests first; implement Money and PriceExperiment; verify mutation/replacement/equality/validation.
-- [ ] Lessons: six sections and six independently reviewed practice questions from the two primary sources.
-- [ ] App: implement screen classes, diagram, accessible input and real side-effect experiments; layered CSS.
-- [ ] Infrastructure: adapt own proven router/version service, fresh content/storage services; regression tests.
-- [ ] Build: hashed complete module graph, version.json, static server true404, Pages workflow.
-- [ ] Verify: Node tests, real Aside interactions/two widths/update and failure experiments, independent concept/code review.
-- [ ] Publish: public repo, GitHub Pages workflow, verify live build/assets/interaction; six-field handoff.
+- [x] Domain: write behavior tests first; implement Money and PriceExperiment; verify mutation/replacement/equality/validation.
+- [x] Lessons: six sections and six independently reviewed practice questions from the two primary sources.
+- [x] App: implement screen classes, diagram, accessible input and real side-effect experiments; layered CSS.
+- [x] Infrastructure: adapt own proven router/version service, fresh content/storage services; regression tests.
+- [x] Build: hashed complete module graph, version.json, static server true404, Pages workflow.
+- [x] Verify: Node tests, real Aside interactions/two widths/update and failure experiments, independent concept/code review.
+- [x] Publish: public repo, GitHub Pages workflow, verify live build/assets/interaction; six-field handoff.
+
+Final publication verification is recorded separately in docs/handoff.json.

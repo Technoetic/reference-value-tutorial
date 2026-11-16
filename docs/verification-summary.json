@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "node_tests": 41,
+  "build": "rv-113f27fdffcb",
+  "local_update_matrix": [
+    {
+      "name": "focus detects new build without background reload",
+      "pass": true
+    },
+    {
+      "name": "dirty update keeps target pending and draft intact",
+      "pass": true
+    },
+    {
+      "name": "clean next navigation automatically replaces full document and keeps requested screen",
+      "pass": true
+    },
+    {
+      "name": "saved reference experiment survives document update",
+      "pass": true
+    },
+    {
+      "name": "rollback switches to different older build",
+      "pass": true
+    },
+    {
+      "name": "version HTTP failure keeps runtime and learning usable",
+      "pass": true
+    },
+    {
+      "name": "malformed version response does not reload loop",
+      "pass": true
+    },
+    {
+      "name": "content failure shows retry",
+      "pass": true
+    },
+    {
+      "name": "retry restores same requested screen",
+      "pass": true
+    },
+    {
+      "name": "slow previous response cannot overwrite latest screen",
+      "pass": true
+    },
+    {
+      "name": "data-only change is fetched fresh without document reload",
+      "pass": true
+    },
+    {
+      "name": "editing while version check waits protects the late draft",
+      "pass": true
+    },
+    {
+      "name": "failed save is not treated as clean state",
+      "pass": true
+    },
+    {
+      "name": "save retry preserves experiment and completes intended move",
+      "pass": true
+    },
+    {
+      "name": "answering a question preserves unsaved note text",
+      "pass": true
+    },
+    {
+      "name": "guard saves note before proceeding",
+      "pass": true
+    },
+    {
+      "name": "Back restores screen and saved note",
+      "pass": true
+    },
+    {
+      "name": "Forward restores URL and screen",
+      "pass": true
+    },
+    {
+      "name": "missing assets/data return true 404",
+      "pass": true
+    },
+    {
+      "name": "direct deep link and ordinary refresh restore equality screen",
+      "pass": true
+    }
+  ],
+  "public_transition": {
+    "old": {
+      "build": "rv-64e391ddceac",
+      "timeOrigin": 1794787036138.9
+    },
+    "build": "rv-113f27fdffcb",
+    "screen": "value",
+    "dirty": {
+      "preserved": true,
+      "sameDocument": true,
+      "build": "rv-64e391ddceac",
+      "screen": "reference"
+    },
+    "headers": {
+      "html": "max-age=600",
+      "version": "max-age=600"
+    },
+    "missing": [
+      {
+        "path": "assets/not-found-20261116.js",
+        "status": 404
+      },
+      {
+        "path": "not-found-20261116.css",
+        "status": 404
+      },
+      {
+        "path": "data/not-found-20261116.json",
+        "status": 404
+      }
+    ]
+  },
+  "public_integrity_initial": {
+    "pass": false,
+    "reason": ".nojekyll is a control marker consumed by GitHub Pages; excluded from subsequent manifest",
+    "other_files_verified": 37
+  },
+  "independent_layout_checks": 51,
+  "ci_runs": [
+    "https://github.com/Technoetic/reference-value-tutorial/actions/runs/43777422754",
+    "https://github.com/Technoetic/reference-value-tutorial/actions/runs/43777594641"
+  ]
+}
