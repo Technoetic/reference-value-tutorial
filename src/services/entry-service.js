@@ -5,7 +5,11 @@ export class EntryService{
  async start(){
   try{await this.version.refresh();}catch{return 'continue';}
   if(!this.version.pendingBuild)return 'continue';
-  const target=new URL(this.currentURL);target.searchParams.set('_rv',this.version.pendingBuild+'-'+crypto.randomUUID());
+  const target=new URL(this.currentURL);
+  // If the intended deployment still served old HTML, stop automatic retries.
+  // Existing runtime stays usable; a later explicit navigation can recheck.
+  if(target.searchParams.get('_rv')?.startsWith(this.version.pendingBuild+'-'))return 'continue';
+  target.searchParams.set('_rv',this.version.pendingBuild+'-'+crypto.randomUUID());
   this.replace(target.href);return 'replaced';
  }
 }

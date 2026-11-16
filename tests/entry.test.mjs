@@ -8,3 +8,7 @@ test('stale entry switches full document before mounting editable UI, preserving
 test('same-build or failed version check still starts the existing app',async()=>{
  for(const version of [{pendingBuild:null,refresh:async()=>{}},{pendingBuild:null,refresh:async()=>{throw Error('offline');}}]){let replaced=false;const gate=new EntryService({version,currentURL:'https://demo.test/',replace:()=>replaced=true});assert.equal(await gate.start(),'continue');assert.equal(replaced,false);}
 });
+test('persistent CDN version/HTML mismatch does not create an automatic reload loop',async()=>{
+ let replaced=false;const gate=new EntryService({version:{pendingBuild:'rv-new',refresh:async()=>{}},currentURL:'https://demo.test/tutorial/?_rv=rv-new-previous-attempt#/value',replace:()=>replaced=true});
+ assert.equal(await gate.start(),'continue');assert.equal(replaced,false);
+});
