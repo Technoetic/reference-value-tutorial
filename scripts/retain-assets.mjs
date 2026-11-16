@@ -5,7 +5,8 @@ import {createHash,randomUUID} from 'node:crypto';
 import {APP} from './build.mjs';
 
 // The page, version.json and the data files are replaced by every deploy;
-// only build-named assets of the live build are carried forward.
+// verified immutable assets are carried forward, including older graphs still
+// reachable through GitHub Pages' cached entry HTML. Byte/count caps fail closed.
 const REPLACED=new Set(['index.html','version.json','.nojekyll']);
 const DATA_PATH=/^data\/[a-z\d-]+\.json$/;
 
@@ -35,11 +36,10 @@ export async function retainAssets({baseUrl='https://technoetic.github.io/refere
     if(!/^[a-f\d]{64}$/.test(digest))throw Error('Invalid previous manifest hash');
     if(REPLACED.has(name)||DATA_PATH.test(name))continue;
     if(!/^assets\/(?:[a-z\d_-]+\/)*[a-z\d_.-]+\.(js|css|svg)$/i.test(name))throw Error('Invalid previous asset path');
-    // A deployment keeps the last live build, not its retained ancestors.
-    if(name.endsWith('.'+manifest.buildId+'.js')||name.endsWith('.'+manifest.buildId+'.css')||name.endsWith('.'+manifest.buildId+'.svg'))assets.push([name,digest]);
+    assets.push([name,digest]);
   }
   if(!assets.length)throw Error('Previous manifest has no current-build assets');
-  if(assets.length>128)throw Error('Previous asset count exceeds limit');
+  if(assets.length>2048)throw Error('Previous asset count exceeds limit');
   const version=JSON.parse((await bytes(await request('version.json'),4096)).toString('utf8'));
   if(version.buildId!==manifest.buildId)throw Error('Previous manifest/version mismatch');
   const verified=[];let total=0;

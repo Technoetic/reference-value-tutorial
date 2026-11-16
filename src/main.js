@@ -2,6 +2,7 @@ import {ROUTES} from './shared/routes.js';
 import {escapeHTML as e} from './shared/dom.js';
 import {Router} from './services/router.js';
 import {VersionService} from './services/version-service.js';
+import {EntryService} from './services/entry-service.js';
 import {ContentService} from './services/content-service.js';
 import {LabStorageService} from './services/storage-service.js';
 import {PriceExperiment} from './domain/price-experiment.js';
@@ -12,12 +13,12 @@ import {PracticeScreen} from './screens/practice-screen.js';
 import {CodeScreen} from './screens/code-screen.js';
 
 class TutorialApp{
- constructor(){
+ constructor({version}={}){
   this.root=document.querySelector('#main');this.loadedBuild=document.querySelector('meta[name="app-build"]').content;
   this.baseUrl=new URL('./',location.href);this.baseUrl.hash='';this.baseUrl.search='';
   this.storage=new LabStorageService();this.progress=this.storage.load();this.saving=false;this.unsaved=false;this.sequence=0;
   document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();this.root.focus();this.root.scrollIntoView({block:'start'});});
-  this.createLabs();this.contentService=new ContentService({baseUrl:this.baseUrl});this.version=new VersionService({baseUrl:this.baseUrl,loadedBuild:this.loadedBuild});
+  this.createLabs();this.contentService=new ContentService({baseUrl:this.baseUrl});this.version=version??new VersionService({baseUrl:this.baseUrl,loadedBuild:this.loadedBuild});
   document.body.dataset.build=this.loadedBuild;document.querySelector('#build-label').textContent=this.loadedBuild.slice(0,15);
   this.nav=document.querySelector('#lesson-nav');this.nav.innerHTML=ROUTES.map((r,i)=>`<a href="#${r.path}" data-route="${r.path}"><span>${String(i+1).padStart(2,'0')}</span><b>${e(r.label)}</b></a>`).join('');
   document.querySelector('#motion-toggle').addEventListener('click',ev=>{const b=ev.currentTarget,on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));document.body.classList.toggle('reduce-motion',on);});
@@ -61,4 +62,12 @@ class TutorialApp{
  }
  async start(){await this.router.start();if(this.storage.warning)this.notice(this.storage.warning);}
 }
-try{new TutorialApp().start().catch(error=>{document.querySelector('#main').textContent='튜토리얼을 시작하지 못했어요. '+error.message;});}catch(error){document.querySelector('#main').textContent='튜토리얼을 시작하지 못했어요. '+error.message;}
+async function boot(){
+ const loadedBuild=document.querySelector('meta[name="app-build"]').content;
+ const baseUrl=new URL('./',location.href);baseUrl.hash='';baseUrl.search='';
+ const version=new VersionService({baseUrl,loadedBuild});
+ const entry=new EntryService({version,currentURL:location.href,replace:url=>location.replace(url)});
+ if(await entry.start()==='replaced')return;
+ await new TutorialApp({version}).start();
+}
+boot().catch(error=>{document.querySelector('#main').textContent='튜토리얼을 시작하지 못했어요. '+error.message;});
